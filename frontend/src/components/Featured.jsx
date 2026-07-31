@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-const featuredIds = [36, 37, 41, 38, 26,4,32,25];
+const featuredIds = [36, 37, 41, 38, 26, 4, 32, 25];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,8 +27,11 @@ const Featured = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
+  // Dynamic API Base URL fallback
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5012";
+
   useEffect(() => {
-    fetch("http://localhost:5012/api/product")
+    fetch(`${baseUrl}/api/product`)
       .then((response) => response.json())
       .then((data) => {
         const featuredProducts = featuredIds
@@ -40,7 +43,7 @@ const Featured = () => {
       .catch((error) =>
         console.error("Error loading featured products:", error)
       );
-  }, []);
+  }, [baseUrl]);
 
   return (
     <div className="bg-gray-100 py-12">
@@ -73,29 +76,29 @@ const Featured = () => {
             variants={itemVariants}
             whileHover={{ y: -10 }}
             onClick={() => navigate(`/product/${product.id}`)}
-            
             className="bg-white shadow-md overflow-hidden hover:shadow-2xl transition-shadow max-h-[420px] cursor-pointer"
           >
             <div className="relative overflow-hidden">
               <motion.img
                 src={product.image}
                 alt={product.name}
-                className="h-64 w-full object-cover cursur-pointer"
+                className="h-64 w-full object-cover cursor-pointer"
                 whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.4 }}
               />
 
               {product.tag && (
                 <motion.span
-                initial={{ x: 50, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-                style={{ fontFamily: "Playfair Display" }}
-                  className={`absolute top-2 right-2 text-xs px-2 py-1 text-white ${product.tag === "SALE"
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  style={{ fontFamily: "Playfair Display" }}
+                  className={`absolute top-2 right-2 text-xs px-2 py-1 text-white ${
+                    product.tag === "SALE"
                       ? "bg-red-500"
                       : product.tag === "NEW"
-                        ? "bg-pink-500"
-                        : "bg-green-500"
-                    }`}
+                      ? "bg-pink-500"
+                      : "bg-green-500"
+                  }`}
                 >
                   {product.tag}
                 </motion.span>
@@ -107,8 +110,10 @@ const Featured = () => {
                 {product.name}
               </h2>
 
-              <p style={{ fontFamily: "Playfair Display" }}
-              className="text-gray-700 text-center mt-2">
+              <p
+                style={{ fontFamily: "Playfair Display" }}
+                className="text-gray-700 text-center mt-2"
+              >
                 Rs. {product.price}
               </p>
             </div>

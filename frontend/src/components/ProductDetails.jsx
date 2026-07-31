@@ -37,6 +37,9 @@ const ProductDetails = () => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
+  // Dynamic API Base URL fallback
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5012";
+
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
@@ -71,7 +74,11 @@ const ProductDetails = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5012/api/Product/${id}`)
+    // Scroll to top when changing products
+    window.scrollTo(0, 0);
+    setLoading(true);
+
+    fetch(`${baseUrl}/api/Product/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Product data unavailable.");
         return res.json();
@@ -79,7 +86,7 @@ const ProductDetails = () => {
       .then((data) => {
         setProduct(data);
 
-        fetch(`http://localhost:5012/api/product/related/${data.id}`)
+        fetch(`${baseUrl}/api/product/related/${data.id}`)
           .then((res) => res.json())
           .then((related) => {
             setRelatedProducts(related);
@@ -90,7 +97,7 @@ const ProductDetails = () => {
         console.log("Fetch error:", err);
         setLoading(false);
       });
-  }, [id]);
+  }, [id, baseUrl]);
 
   // Quantity controls restricted by available backend product stock (product.quantity)
   const handleIncrease = () => {

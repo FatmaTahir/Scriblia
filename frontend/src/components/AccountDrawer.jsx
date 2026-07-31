@@ -9,6 +9,9 @@ const AccountDrawer = ({ isOpen, onClose }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
+  // Dynamic API Base URL fallback
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5012";
+
   useEffect(() => {
     if (!isOpen) {
       setAccountView("login");
@@ -24,7 +27,7 @@ const AccountDrawer = ({ isOpen, onClose }) => {
     e.preventDefault();
     
     try {
-      const response = await fetch("http://localhost:5012/api/Auth/login", {
+      const response = await fetch(`${baseUrl}/api/Auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -51,12 +54,11 @@ const AccountDrawer = ({ isOpen, onClose }) => {
     }
   };
 
-
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5012/api/Auth/register", {
+      const response = await fetch(`${baseUrl}/api/Auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -90,7 +92,7 @@ const AccountDrawer = ({ isOpen, onClose }) => {
       }`}
     >
       <div className="flex items-center justify-between px-6 py-4 border-b border-pink-500">
-        <h2  className="font-bold text-lg text-gray-800 dancing-script">
+        <h2 className="font-bold text-lg text-gray-800 dancing-script">
           {accountView === "login" ? "Login" : "Register"}
         </h2>
         <button onClick={onClose} className="text-gray-800 hover:text-pink-500 transition-colors">
@@ -104,22 +106,22 @@ const AccountDrawer = ({ isOpen, onClose }) => {
             <input
               placeholder="Email"
               type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-              style={{fontFamily:'PlayFair Display'}}
+              style={{ fontFamily: 'Playfair Display' }}
               className="w-full px-4 py-3 border border-gray-500 rounded-xl focus:outline-pink-500 text-sm text-gray-800 placeholder-gray-500"
             />
             <input
               placeholder="Password"
               type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
-              style={{fontFamily:'PlayFair Display'}}
+              style={{ fontFamily: 'Playfair Display' }}
               className="w-full px-4 py-3 border border-gray-500 rounded-xl focus:outline-pink-500 text-sm text-gray-800 placeholder-gray-500"
             />
-            <motion.button whileHover={{y:-4}}
-             type="submit" style={{fontFamily:'PlayFair Display'}}
-             className="w-full bg-pink-500  shadow-2xl  text-white dancing-script font-medium py-3 rounded-full hover:bg-pink-600 transition-colors text-sm">
+            <motion.button whileHover={{ y: -4 }}
+              type="submit" style={{ fontFamily: 'Playfair Display' }}
+              className="w-full bg-pink-500 shadow-2xl text-white dancing-script font-medium py-3 rounded-full hover:bg-pink-600 transition-colors text-sm">
               Sign In
             </motion.button>
             <div className="text-center pt-2"
-            style={{fontFamily:'PlayFair Display'}}>
+              style={{ fontFamily: 'Playfair Display' }}>
               <button type="button" onClick={() => setAccountView("register")} className="text-sm text-gray-600 hover:text-black underline transition-colors">
                 New customer? Create your account
               </button>
@@ -128,33 +130,33 @@ const AccountDrawer = ({ isOpen, onClose }) => {
         ) : (
           <form onSubmit={handleRegisterSubmit} className="p-6 flex flex-col space-y-5">
             <input
-            style={{fontFamily:'PlayFair Display'}}
+              style={{ fontFamily: 'Playfair Display' }}
               type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)}
               className="w-full px-3 py-3 border border-gray-500 rounded-xl focus:outline-pink-500 text-sm text-gray-800 placeholder-gray-500"
             />
             <input
-            style={{fontFamily:'PlayFair Display'}}
+              style={{ fontFamily: 'Playfair Display' }}
               type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)}
               className="w-full px-4 py-3 border border-gray-500 rounded-xl focus:outline-pink-500 text-sm text-gray-800 placeholder-gray-500"
             />
             <input
-            style={{fontFamily:'PlayFair Display'}}
+              style={{ fontFamily: 'Playfair Display' }}
               placeholder="Email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-3 border border-gray-500 rounded-xl focus:outline-pink-500 text-sm text-gray-800 placeholder-gray-500"
             />
             <input
-            style={{fontFamily:'PlayFair Display'}}
+              style={{ fontFamily: 'Playfair Display' }}
               placeholder="Password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-3 border border-gray-500 rounded-xl focus:outline-pink-500 text-sm text-gray-800 placeholder-gray-500"
             />
-            <motion.button whileHover={{y:-4}}
-             type="submit" style={{fontFamily:'PlayFair Display'}}
-             className="w-full bg-pink-500  dancing-script shadow-2xl  text-white font-medium py-3 rounded-full hover:bg-pink-600 transition-colors text-sm">
+            <motion.button whileHover={{ y: -4 }}
+              type="submit" style={{ fontFamily: 'Playfair Display' }}
+              className="w-full bg-pink-500 dancing-script shadow-2xl text-white font-medium py-3 rounded-full hover:bg-pink-600 transition-colors text-sm">
               Register
             </motion.button>
             <div className="text-center pt-2">
-              <button style={{fontFamily:'PlayFair Display'}}
-              type="button" onClick={() => setAccountView("login")} className="text-sm text-gray-600 hover:text-black underline transition-colors">
+              <button style={{ fontFamily: 'Playfair Display' }}
+                type="button" onClick={() => setAccountView("login")} className="text-sm text-gray-600 hover:text-black underline transition-colors">
                 Already have an account? Login here
               </button>
             </div>
