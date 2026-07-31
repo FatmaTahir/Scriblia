@@ -55,19 +55,20 @@ builder.Services.AddCors(options =>
         {
             policy.WithOrigins("http://localhost:5173")
                   .AllowAnyHeader()
-                  .AllowAnyMethod()
-             ;
+                  .AllowAnyMethod();
         });
 });
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Enable Swagger in ALL environments (including Azure Production)
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Scriblia API V1");
+    c.RoutePrefix = string.Empty; // Serves Swagger UI directly at the root URL (https://your-site.azurewebsites.net/)
+});
 
 app.UseHttpsRedirection();
 app.UseRouting();

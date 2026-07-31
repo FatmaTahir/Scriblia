@@ -317,3 +317,4 @@ C:\Users\hp\Documents\GitHub\Scriblia\backend\backend\obj\Debug\net8.0\refint\ba
 C:\Users\hp\Documents\GitHub\Scriblia\backend\backend\obj\Debug\net8.0\backend.pdb
 C:\Users\hp\Documents\GitHub\Scriblia\backend\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 C:\Users\hp\Documents\GitHub\Scriblia\backend\backend\obj\Debug\net8.0\ref\backend.dll
+C:\Users\hp\Documents\GitHub\Scriblia\backend\backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
