@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\React\\e-commerce\\backend\\backend\\backend.csproj": {}
+    "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\React\\e-commerce\\backend\\backend\\backend.csproj": {
+    "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\React\\e-commerce\\backend\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\React\\e-commerce\\backend\\backend\\backend.csproj",
+        "projectPath": "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\backend\\backend.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\React\\e-commerce\\backend\\backend\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

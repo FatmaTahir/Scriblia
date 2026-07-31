@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bXacC3SxxeQ=",
+  "dgSpecHash": "Q24Z61fHDgo=",
   "success": true,
-  "projectFilePath": "C:\\React\\e-commerce\\backend\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\backend\\backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
