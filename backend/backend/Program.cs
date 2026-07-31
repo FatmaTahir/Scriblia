@@ -22,9 +22,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services
-.AddIdentity<User, IdentityRole>()
-.AddEntityFrameworkStores<AppDbContext>()
-.AddDefaultTokenProviders();
+    .AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 // JWT Authentication — registered AFTER AddIdentity so it wins as the default scheme
 builder.Services.AddAuthentication(options =>
@@ -47,7 +47,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// CORS Configuration matching your React Vite port
+// CORS Configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
@@ -56,10 +56,11 @@ builder.Services.AddCors(options =>
             policy.WithOrigins(
                     "http://localhost:5173",
                     "http://localhost:5012",
-                    "https://scriblia-stationery.vercel.app"  
+                    "https://scriblia-stationery.vercel.app"
                   )
                   .AllowAnyHeader()
-                  .AllowAnyMethod();
+                  .AllowAnyMethod()
+                  .AllowCredentials(); // Allows auth tokens & cookies if needed
         });
 });
 
@@ -71,13 +72,19 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Scriblia API V1");
-    c.RoutePrefix = string.Empty; // Serves Swagger UI directly at the root URL (https://your-site.azurewebsites.net/)
+    c.RoutePrefix = string.Empty; // Serves Swagger UI directly at the root URL
 });
 
 app.UseHttpsRedirection();
-app.UseRouting();
+
+// IMPORTANT: UseCors must come BEFORE UseRouting and BEFORE UseAuthentication/Authorization
 app.UseCors("AllowReactApp");
+
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
+
 app.Run();
