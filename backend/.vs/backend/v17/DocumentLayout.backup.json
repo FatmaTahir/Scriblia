@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C5D98560-EA21-48E7-915E-3BBD59CE884A}|backend\\backend.csproj|c:\\users\\hp\\documents\\github\\scriblia\\backend\\backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C5D98560-EA21-48E7-915E-3BBD59CE884A}|backend\\backend.csproj|solutionrelative:backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C5D98560-EA21-48E7-915E-3BBD59CE884A}|backend\\backend.csproj|c:\\users\\hp\\documents\\github\\scriblia\\backend\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5D98560-EA21-48E7-915E-3BBD59CE884A}|backend\\backend.csproj|solutionrelative:backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5D98560-EA21-48E7-915E-3BBD59CE884A}|backend\\backend.csproj|c:\\users\\hp\\documents\\github\\scriblia\\backend\\backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C5D98560-EA21-48E7-915E-3BBD59CE884A}|backend\\backend.csproj|solutionrelative:backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C5D98560-EA21-48E7-915E-3BBD59CE884A}|backend\\backend.csproj|c:\\users\\hp\\documents\\github\\scriblia\\backend\\backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -92,7 +92,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -133,13 +133,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\backend\\Program.cs",
               "RelativeDocumentMoniker": "backend\\Program.cs",
               "ToolTip": "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\backend\\Program.cs",
               "RelativeToolTip": "backend\\Program.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAiwE4AAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAADgAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-24T19:21:19.292Z",
               "EditorCaption": ""
@@ -158,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\hp\\Documents\\GitHub\\Scriblia\\backend\\backend\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "backend\\Properties\\launchSettings.json",

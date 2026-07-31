@@ -53,7 +53,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173")
+            policy.WithOrigins("http://localhost:5173", "http://localhost:5012",                          // Local backend port fallback
+                    "https://scriblia-stationery.vercel.app/")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
