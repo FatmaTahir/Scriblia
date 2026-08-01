@@ -68,6 +68,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 // Enable Swagger in ALL environments (including Azure Production)
+app.UseDeveloperExceptionPage();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {

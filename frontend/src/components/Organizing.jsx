@@ -34,8 +34,8 @@ useEffect(() => {
       return res.json();
     })
     .then(data => {
-      console.log("Art Supplies Data received successfully:", data);
-      setArts(data);
+      console.log("Organizers Data received successfully:", data);
+      setOrgItems(data); // 👈 FIXED HERE!
     })
     .catch(err => console.log("Fetch error:", err));
 }, []);

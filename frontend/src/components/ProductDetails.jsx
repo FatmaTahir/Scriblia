@@ -141,12 +141,18 @@ const ProductDetails = () => {
 
     const mouseX = e.clientX - left;
     const mouseY = e.clientY - top;
+
+    // Calculate lens position within image boundaries
     const lensX = Math.min(Math.max(mouseX - LENS_SIZE / 2, 0), width - LENS_SIZE);
     const lensY = Math.min(Math.max(mouseY - LENS_SIZE / 2, 0), height - LENS_SIZE);
+
     setLensPos({ x: lensX, y: lensY });
-    const x = ((mouseX - left * 0) / width) * 100;
-    const y = ((mouseY - top * 0) / height) * 100;
-    setZoomPosition({ x, y });
+
+    // Calculate normalized percentage (0% to 100%) based on lens position
+    const xPercent = (lensX / (width - LENS_SIZE)) * 100;
+    const yPercent = (lensY / (height - LENS_SIZE)) * 100;
+
+    setZoomPosition({ x: xPercent, y: yPercent });
   };
 
   const handleMouseEnter = () => setShowZoom(true);

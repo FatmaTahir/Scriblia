@@ -35,7 +35,7 @@ const Featured = () => {
       .then((response) => response.json())
       .then((data) => {
         const featuredProducts = featuredIds
-          .map((id) => data.find((product) => product.id === id))
+          .map((id) => data.find((product) => Number(product.id) === Number(id))) // 👈 Safely match numeric IDs
           .filter(Boolean);
 
         setProducts(featuredProducts);
@@ -62,7 +62,7 @@ const Featured = () => {
         </p>
       </motion.div>
 
-      {/* Products */}
+      {/* Products Grid */}
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-10 pt-5 mx-20"
         variants={containerVariants}
@@ -85,6 +85,9 @@ const Featured = () => {
                 className="h-64 w-full object-cover cursor-pointer"
                 whileHover={{ scale: 1.2 }}
                 transition={{ duration: 0.4 }}
+                onError={(e) => {
+                  e.target.src = "https://placeholder.co/300x200?text=No+Image+Found"; // 👈 Image fallback safety
+                }}
               />
 
               {product.tag && (

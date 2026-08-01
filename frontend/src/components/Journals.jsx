@@ -29,19 +29,19 @@ const Journals = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5012";
 
 useEffect(() => {
-  fetch(`${baseUrl}/api/Product/category/journals`)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(`Server responded with status: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then(data => {
-      console.log("Art Supplies Data received successfully:", data);
-      setArts(data);
-    })
-    .catch(err => console.log("Fetch error:", err));
-}, []);
+    fetch(`${baseUrl}/api/Product/category/journals`)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Server responded with status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log("Journals Data received successfully:", data);
+        setJns(data); // 👈 FIXED HERE!
+      })
+      .catch(err => console.log("Fetch error:", err));
+  }, []);
 
   return (
     <div className="bg-gray-100 min-h-screen py-12 flex flex-col">
