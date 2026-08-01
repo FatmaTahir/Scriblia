@@ -35,31 +35,58 @@ const Dashboard = () => {
   // Dynamic API Base URL fallback
   const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5012";
 
+  // Helper function to extract array regardless of wrapper key
+  const extractArray = (data) => {
+    if (Array.isArray(data)) return data;
+    if (data?.data && Array.isArray(data.data)) return data.data;
+    if (data?.products && Array.isArray(data.products)) return data.products;
+    if (data?.orders && Array.isArray(data.orders)) return data.orders;
+    if (data?.$values && Array.isArray(data.$values)) return data.$values;
+    return [];
+  };
+
   useEffect(() => {
     const fetchDashboardData = async () => {
       const token = localStorage.getItem("authToken");
 
       try {
-        // PRODUCTS
+        // 1. FETCH PRODUCTS
         const productResponse = await fetch(`${baseUrl}/api/product`);
-        const productsData = await productResponse.json();
-        const products = Array.isArray(productsData) ? productsData : [];
+        const rawProductsData = await productResponse.json();
+        const products = extractArray(rawProductsData);
 
-        // ORDERS
-        const orderResponse = await fetch(`${baseUrl}/api/orders`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const ordersData = await orderResponse.json();
-        const orders = Array.isArray(ordersData) ? ordersData : [];
+        // 2. FETCH ORDERS
+        let orders = [];
+        if (token) {
+          const orderResponse = await fetch(`${baseUrl}/api/orders`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          });
 
-        // Calculate revenue
-        const totalRevenue = orders.reduce(
-          (sum, order) => sum + (Number(order.amount) || 0),
-          0
-        );
+          if (orderResponse.ok) {
+            const rawOrdersData = await orderResponse.json();
+            orders = extractArray(rawOrdersData);
+          } else {
+            console.warn("Orders fetch failed with status:", orderResponse.status);
+          }
+        } else {
+          console.warn("No authToken found in localStorage.");
+        }
 
+        // 3. CALCULATE REVENUE (Checking common order amount property names)
+        const totalRevenue = orders.reduce((sum, order) => {
+          const val =
+            order.amount ??
+            order.totalAmount ??
+            order.totalPrice ??
+            order.price ??
+            0;
+          return sum + Number(val);
+        }, 0);
+
+        // 4. UPDATE STATS
         setStats([
           {
             title: "Total Products",
@@ -83,7 +110,7 @@ const Dashboard = () => {
           },
         ]);
 
-        // Latest 4 orders
+        // 5. SET LATEST ORDERS
         setRecentOrders(orders.slice(0, 4));
       } catch (error) {
         console.error("Dashboard error:", error);
@@ -129,11 +156,11 @@ const Dashboard = () => {
               <p className="text-gray-500">No recent activity</p>
             )}
 
-            {recentOrders.map((order) => (
-              <div key={order.id || order._id} className="border-b pb-3">
+            {recentOrders.map((order, idx) => (
+              <div key={order.id || order._id || idx} className="border-b pb-3">
                 📦 New order received from{" "}
                 <b>{order.customer || order.fullName || "Customer"}</b> — Rs{" "}
-                {order.amount}
+                {order.amount ?? order.totalAmount ?? order.totalPrice ?? 0}
               </div>
             ))}
           </div>
