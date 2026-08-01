@@ -13,15 +13,47 @@ The application is built using **React**, **ASP.NET Core Web API**, **Entity Fra
 
 # 📸 Preview
 
-> Add screenshots here after deployment.
+<img width="948" height="439" alt="image" src="https://github.com/user-attachments/assets/4afe0019-4d00-4ab8-a1f8-dbbf0397dc4e" />
+<img width="946" height="437" alt="image" src="https://github.com/user-attachments/assets/36fbd7af-ab39-41ac-a0e8-0b3af1fc83c6" />
+
+
+
 
 ```
 Home Page
+
+```
+<img width="949" height="441" alt="image" src="https://github.com/user-attachments/assets/91825dfa-717a-4aa0-b871-3c5c59f0c465" />
+
+```
+Search Product
+
+```
+<img width="947" height="440" alt="image" src="https://github.com/user-attachments/assets/ad496af3-b1a8-4513-b969-f33f76c93e0e" />
+<img width="947" height="440" alt="image" src="https://github.com/user-attachments/assets/ab2f2280-3ebf-4776-9bf3-ac88b8cdf8c6" />
+<img width="947" height="440" alt="image" src="https://github.com/user-attachments/assets/95c10887-8326-48d2-91e9-cca15c1e1092" />
+
+```
 Product Details
+```
+<img width="949" height="440" alt="image" src="https://github.com/user-attachments/assets/f9754100-175d-463a-9fdd-3bc33327c041" />
+<img width="947" height="438" alt="image" src="https://github.com/user-attachments/assets/c046c54c-734f-42c2-8c10-4e005126248b" />
+
+
+```
 Shopping Cart
+```
+<img width="947" height="439" alt="image" src="https://github.com/user-attachments/assets/d417e697-2cc4-4e64-8b89-57f4078e3e7f" />
+
+```
 Checkout
+```
+<img width="942" height="414" alt="image" src="https://github.com/user-attachments/assets/67012b77-3649-4fb3-bc85-5fad4ad4a588" />
+<img width="948" height="436" alt="image" src="https://github.com/user-attachments/assets/b19fa9ed-c50d-4dab-8e7e-c85e24f366c0" />
+
+```
 Admin Dashboard
-Orders
+
 ```
 
 ---
@@ -216,7 +248,7 @@ Scriblia
 ## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Scriblia.git
+git clone https://github.com/FatmaTahir/Scriblia.git
 ```
 
 ---
