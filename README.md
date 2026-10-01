@@ -151,8 +151,6 @@ Animations throughout the application are powered by **Framer Motion** for polis
 
 ✔ JWT Token Authorization
 
-✔ Role-based Authorization Ready
-
 ✔ CRUD Operations
 
 ✔ DTO Mapping
